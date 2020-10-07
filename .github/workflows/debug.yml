@@ -6,6 +6,7 @@ name: CI
 # events but only for the main branch
 on:
   push:
+  pull_request:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -49,4 +50,4 @@ jobs:
         id: random-color-generator
         
       - name: Get color
-        run: echo 'The selected color is' ${steps.random-color-generator.outputs.SELECTED_COLOR}
+        run: echo 'The selected color is' ${{steps.random-color-generator.outputs.SELECTED_COLOR}}
