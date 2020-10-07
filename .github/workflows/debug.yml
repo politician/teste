@@ -26,6 +26,8 @@ jobs:
         id: base
       
       - run: curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
+      
+      - run: gotk
         
       - name: Get color
         run: echo 'The selected color is' ${{steps.base.outputs.value}}
