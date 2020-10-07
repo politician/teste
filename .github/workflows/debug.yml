@@ -20,6 +20,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - run: echo ${{contains(github.base_ref, 'do')}}
+      
+      - name: Set base branch
+        run: echo '::set-output name=value::green'
+        id: base
+      
+      - run: curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
+        
+      - name: Get color
+        run: echo 'The selected color is' ${{steps.base.outputs.value}}
+
+        
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -46,7 +57,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
 
       - name: Set selected color
-        run: ::set-output name=SELECTED_COLOR::green
+        run: echo '::set-output name=SELECTED_COLOR::green'
         id: random-color-generator
         
       - name: Get color
