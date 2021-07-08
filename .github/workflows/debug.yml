@@ -72,4 +72,39 @@ jobs:
         if: steps.random-color-generator.outputs.SELECTED_COLOR != ''
         run: echo 'The selected color is' ${{steps.random-color-generator.outputs.SELECTED_COLOR}}
         
-          
+      - run: "[[ 3 < 2 ]]"
+        continue-on-error: true    
+        
+      - run: echo "job failed"
+        if: failure()
+        
+      - run: echo "job succeeded"
+        if: success()
+      
+      - run: "[[ 3 > 2 ]]"
+        continue-on-error: true
+        
+      - run: echo "job failed"
+        if: failure()
+
+      - run: echo "job succeeded"
+        if: success()
+        
+              
+      - run: "[[ 3 < 2 ]]"
+        continue-on-error: true    
+        
+      - run: echo "job failed"
+        if: failure()
+        
+      - run: echo "job succeeded"
+        if: success()
+      
+      - run: "[[ 3 > 2 ]]"
+        continue-on-error: true
+        
+      - run: echo "job failed"
+        if: failure()
+
+      - run: echo "job succeeded"
+        if: success()
