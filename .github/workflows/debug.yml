@@ -56,7 +56,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
 
       - name: Set selected color
-        run: echo '::set-output name=SELECTED_COLOR::'
+        run: echo '::set-output name=SELECTED_COLOR::d'
         id: random-color-generator
         
       - name: Get color
