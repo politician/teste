@@ -15,4 +15,6 @@ jobs:
         id: versions
         run: perl -n -e'/^export (\w+)_version="(.+)"$/ && print "::set-output name=$1::$2\n"' <modules/.VERSIONS
 
-      - run: echo ${{ fromJSON(steps.versions.outputs) }}
+      - run: echo ${{ toJSON(steps.versions.outputs) }}
+      
+      - run: echo "${{ steps.versions.outputs }}"
