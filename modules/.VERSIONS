@@ -1,0 +1,8 @@
+# This file is automatically maintained to ensure new module versions bump the oStack version
+# Add any new modules manually
+
+export ostack_version=">= 1.1.1, < 2.0.0"
+export vcs_repo_github_version=">= 1.1.1, < 2.0.0"
+export vcs_teams_github_version=">= 1.1.1, < 2.0.0"
+export kube_cluster_linode_version=">= 1.2.1, < 2.0.0"
+export backend_tfe_version=">= 1.1.1, < 2.0.0"
