@@ -1,0 +1,18 @@
+on:
+  push:
+    branches: [main]
+    paths: ["*", "modules/**"]
+
+jobs:
+  move-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get module versions
+        id: versions
+        run: perl -n -e'/^export (\w+)_version="(.+)"$/ && print "::set-output name=$1::$2\n"' <modules/.VERSIONS
+
+      - run: echo ${{ fromJSON(steps.versions.outputs) }}
