@@ -1,0 +1,32 @@
+name: Prepare new module release
+
+on:
+  push:
+  
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
+      - run: echo $(((RANDOM % 10)))
