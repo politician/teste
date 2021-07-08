@@ -24,7 +24,7 @@ jobs:
           github-token: ${{ secrets.my_token }}
           script: |
             await github.repos.getLatestRelease({
-              owner: context.repo.owner,
+              owner: 'romain-test',
               repo: 'terraform-github-vcs-repo',
             });
             
