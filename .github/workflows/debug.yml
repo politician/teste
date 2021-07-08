@@ -1,6 +1,5 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
@@ -25,14 +24,6 @@ jobs:
         run: echo '::set-output name=value::green'
         id: base
       
-      - run: curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
-      
-      - run: gotk
-        
-      - name: Get color
-        run: echo 'The selected color is' ${{steps.base.outputs.value}}
-
-        
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
