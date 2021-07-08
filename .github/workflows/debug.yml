@@ -6,6 +6,14 @@
 on:
   push:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      run_number:
+        description: "Specify run number"
+        required: true
+      version:
+        description: "Module version to use"
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,9 +28,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: echo ${{contains(github.base_ref, 'do')}}
       
-      - name: Set base branch
-        run: echo '::set-output name=value::green'
-        id: base
+      - run: echo ${{ github.event_name }}
+        if: github.event_name == "workflow_dispatch"
+        
+      - run: echo ${{ github.event_name }}
+        if: github.event_name != "workflow_dispatch"
       
       - name: Dump GitHub context
         env:
