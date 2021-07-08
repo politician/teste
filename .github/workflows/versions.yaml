@@ -23,10 +23,13 @@ jobs:
         with:
           github-token: ${{ secrets.my_token }}
           script: |
-            await github.repos.getLatestRelease({
+            dodo = await github.repos.getLatestRelease({
               owner: 'romain-test',
               repo: 'terraform-github-vcs-repo',
             });
+            console.log(dodo.data.tag_name)
+            console.log(dodo)
+            return dodo
             
       - name: Get result
         run: echo "${{steps.set-result.outputs.result}}"
