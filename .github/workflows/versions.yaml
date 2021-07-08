@@ -1,7 +1,7 @@
 on:
   push:
     branches: [main]
-    paths: ["*", "modules/**"]
+    #paths: ["*", "modules/**"]
 
 jobs:
   move-code:
@@ -16,5 +16,17 @@ jobs:
         run: perl -n -e'/^export (\w+)_version="(.+)"$/ && print "::set-output name=$1::$2\n"' <modules/.VERSIONS
 
       - run: echo ${{ toJSON(steps.versions.outputs) }}
+        continue-on-error: true
       
-      - run: echo "${{ steps.versions.outputs }}"
+      - uses: actions/github-script@v4
+        id: set-result
+        with:
+          github-token: ${{ secrets.my_token }}
+          script: |
+            await github.repos.getLatestRelease({
+              owner: context.repo.owner,
+              repo: 'terraform-github-vcs-repo',
+            });
+            
+      - name: Get result
+        run: echo "${{steps.set-result.outputs.result}}"
