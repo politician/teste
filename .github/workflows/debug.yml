@@ -27,12 +27,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - run: echo ${{contains(github.base_ref, 'do')}}
-      
-      - run: echo ${{ github.event_name }}
-        if: github.event_name == "workflow_dispatch"
         
       - run: echo ${{ github.event_name }}
-        if: github.event_name != "workflow_dispatch"
       
       - name: Dump GitHub context
         env:
