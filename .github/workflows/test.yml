@@ -14,11 +14,11 @@ jobs:
       
     steps:
       - uses: actions/checkout@v2
-      
-      - run: echo $OUTPUT
-        env:
-          OUTPUT: echo $(OUTPUT='' && [[ 'pull_request' == '${{ github.event_name }}' ]] && OUTPUT='-o github_failed_only'; echo $OUTPUT)
+      - name: Define checkov format
+        run: echo ::set-env name=CHECKOV_OUTPUT::$(OUTPUT='' && [[ 'pull_request' == '${{ github.event_name }}' ]] && OUTPUT='-o github_failed_only'; echo $OUTPUT)
 
+      - run: echo $CHECKOV_OUTPUT
+      
       - run: echo ${{ github.event_name }}
       
       - name: Dump GitHub context
