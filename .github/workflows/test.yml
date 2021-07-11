@@ -3,7 +3,6 @@ on:
   push:
     paths-ignore:
       - "**/docs/**"
-      - "**.yml"
   pull_request:
 
 jobs:
