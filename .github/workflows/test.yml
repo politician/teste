@@ -17,7 +17,7 @@ jobs:
            
       - name: Define checkov output format
         id: checkov-format
-        run: echo ::set-output name=checkov_output::$(output='' && [[ 'pull_request' == '${{ github.event_name }}' ]] && output='-o github_failed_only'; echo $output)
+        run: echo ::set-output name=checkov_output::$(output='d' && [[ 'pull_request' == '${{ github.event_name }}' ]] && output='-o github_failed_only'; echo $output)
 
       - run: echo "${{ steps.checkov-format.outputs.checkov_output }}"
       
