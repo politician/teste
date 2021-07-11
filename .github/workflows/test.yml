@@ -14,10 +14,12 @@ jobs:
       
     steps:
       - uses: actions/checkout@v2
-      - name: Define checkov format
-        run: echo ::set-env name=CHECKOV_OUTPUT::$(OUTPUT='' && [[ 'pull_request' == '${{ github.event_name }}' ]] && OUTPUT='-o github_failed_only'; echo $OUTPUT)
+           
+      - name: Define checkov output format
+        id: checkov-format
+        run: echo ::set-output name=checkov_output::$(output='' && [[ 'pull_request' == '${{ github.event_name }}' ]] && output='-o github_failed_only'; echo $output)
 
-      - run: echo $CHECKOV_OUTPUT
+      - run: echo "${{ steps.checkov-format.outputs.checkov_output }}"
       
       - run: echo ${{ github.event_name }}
       
