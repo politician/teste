@@ -13,6 +13,26 @@ jobs:
       output1: steps.random-color-generator.outputs.SELECTED_COLOR
       
     steps:
+    
+      - id: error
+        run: echo ::set-output name=error::true
+      
+      - run: echo ${{toJSON(steps.error.outputs.error)}}
+      - run: echo ${{fromJSON(steps.error.outputs.error)}}
+      
+      - run: echo ${{toJSON("${{steps.error.outputs.error}}")}}
+      - run: echo ${{fromJSON("${{steps.error.outputs.error}}")}}
+      
+          
+      - id: erroro
+        run: echo ::set-output name=error::"true"
+      
+      - run: echo ${{toJSON(steps.erroro.outputs.error)}}
+      - run: echo ${{fromJSON(steps.erroro.outputs.error)}}
+      
+      - run: exit 1
+        continue-on-error: ${{toJSON(steps.error.outputs.error)}}
+    
       - uses: actions/checkout@v2
            
       - name: Define checkov output format
