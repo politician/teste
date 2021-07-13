@@ -15,14 +15,10 @@ jobs:
     steps:
     
       - id: error
-        run: echo ::set-output name=error::true
+        run: echo ::set-output name=error::"$(continue=true && [[ 'pull_request' == '${{ github.event_name }}' ]] && continue=false; echo $continue)"
       
       - run: echo ${{toJSON(steps.error.outputs.error)}}
-      - run: echo ${{fromJSON(steps.error.outputs.error)}}
-      
-      #- run: 'echo ${{toJSON("${{steps.error.outputs.error}}")}}'
-      #- run: 'echo ${{fromJSON("${{steps.error.outputs.error}}")}}'
-      
+      - run: echo ${{fromJSON(steps.error.outputs.error)}}    
           
       - id: erroro
         run: echo ::set-output name=error::"true"
