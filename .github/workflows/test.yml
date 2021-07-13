@@ -31,7 +31,7 @@ jobs:
       - run: echo ${{fromJSON(steps.erroro.outputs.error)}}
       
       - run: exit 1
-        continue-on-error: ${{steps.error.outputs.error}}
+        continue-on-error: ${{fromJSON(steps.error.outputs.error)}}
     
       - uses: actions/checkout@v2
            
