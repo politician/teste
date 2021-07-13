@@ -27,7 +27,7 @@ jobs:
       - run: echo ${{fromJSON(steps.erroro.outputs.error)}}
       
       - run: exit 1
-        continue-on-error: ${{fromJSON(steps.erroro.outputs.error)}}
+        continue-on-error: ${{fromJSON(github.event_name == 'pull_request')}}
     
       - uses: actions/checkout@v2
            
