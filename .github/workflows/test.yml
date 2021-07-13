@@ -20,8 +20,8 @@ jobs:
       - run: echo ${{toJSON(steps.error.outputs.error)}}
       - run: echo ${{fromJSON(steps.error.outputs.error)}}
       
-      - run: 'echo ${{toJSON("${{steps.error.outputs.error}}")}}'
-      - run: 'echo ${{fromJSON("${{steps.error.outputs.error}}")}}'
+      #- run: 'echo ${{toJSON("${{steps.error.outputs.error}}")}}'
+      #- run: 'echo ${{fromJSON("${{steps.error.outputs.error}}")}}'
       
           
       - id: erroro
