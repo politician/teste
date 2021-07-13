@@ -26,8 +26,16 @@ jobs:
       - run: echo ${{toJSON(steps.erroro.outputs.error)}}
       - run: echo ${{fromJSON(steps.erroro.outputs.error)}}
       
+      - run: exit 1 
+        if: ${{ always() }}
+      
+      - run: echo lolo
+        
       - run: exit 1
-        continue-on-error: ${{fromJSON(github.event_name == 'push')}}
+        if: ${{ always() }}
+    
+      - run: echo lolo
+        if: ${{ always() }}
     
       - uses: actions/checkout@v2
            
