@@ -1,7 +1,7 @@
 name: Post-test
 on:
   workflow_run:
-    workflows: [Test]
+    workflows: [test.yml]
     types:
       - completed
     branches: [main]
