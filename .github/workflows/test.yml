@@ -1,9 +1,12 @@
 name: Test
 on:
   push:
-    paths-ignore:
+    branches: [main]
+    paths:
+      - "!**/**"
       - "**/docs/**"
-  pull_request:
+      - "**.md"
+      - "infra/**"
 
 jobs:
   build:
