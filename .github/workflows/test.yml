@@ -12,6 +12,11 @@ jobs:
       
     steps:
     
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+          
       - if: github.event_name == 'pull_request'
         id: changed
         continue-on-error: true
@@ -55,8 +60,6 @@ jobs:
     
       - run: echo lolo
         if: ${{ always() }}
-    
-      - uses: actions/checkout@v2
            
       - name: Define checkov output format
         id: checkov-format
