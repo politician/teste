@@ -1,12 +1,7 @@
 name: Test
 on:
+  pull_request:
   push:
-    branches: [main]
-    paths:
-      - "!**/**"
-      - "**/docs/**"
-      - "**.md"
-      - "infra/**"
 
 jobs:
   build:
@@ -17,6 +12,16 @@ jobs:
       
     steps:
     
+      - if: github.event_name == 'pull_request'
+        id: changed
+        continue-on-error: true
+        name: Check if rerre should be tested
+        run: git diff --quiet HEAD~1 HEAD -- $PATHS
+        env:
+          PATHS: rerre
+        
+      - run: echo ${{steps.changed.outcome}}
+                  
       - id: error
         run: echo ::set-output name=error::"$(continue=true && [[ 'pull_request' == '${{ github.event_name }}' ]] && continue=false; echo $continue)"
       
