@@ -21,7 +21,7 @@ jobs:
         id: changed
         continue-on-error: true
         name: Check if rerre should be tested
-        run: "[[ $(git diff --quiet HEAD~1 HEAD -- $PATHS) ]]"
+        run: ! git diff --quiet HEAD~1 HEAD -- $PATHS
         env:
           PATHS: rerre
         
