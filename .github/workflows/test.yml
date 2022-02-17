@@ -17,6 +17,10 @@ jobs:
         with:
           fetch-depth: 2
           
+      - run: echo $LOL
+        env:
+          LOL: $(date -v-1y -v+1m)
+          
       - if: github.event_name == 'pull_request'
         id: changed
         continue-on-error: true
