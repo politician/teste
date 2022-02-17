@@ -17,9 +17,11 @@ jobs:
         with:
           fetch-depth: 2
           
-      - run: echo $LOL
+      - run: MOU=lul
         env:
           LOL: $(date -v-1y -v+1m)
+          
+      - run: echo $MOU
           
       - if: github.event_name == 'pull_request'
         id: changed
