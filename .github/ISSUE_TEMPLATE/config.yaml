@@ -1,0 +1,6 @@
+---
+blank_issues_enabled: false
+contact_links:
+  - name: Contributor Repository
+    url: https://github.com/olivr/contrib-template-repo/issues
+    about: All issues are on the contributor repository.
